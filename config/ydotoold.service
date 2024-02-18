@@ -1,0 +1,11 @@
+[Unit]
+Description=ydotoold
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ydotoold -p /var/run/ydotool.sock -P 0666
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

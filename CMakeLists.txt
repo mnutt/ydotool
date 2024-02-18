@@ -38,3 +38,18 @@ install(TARGETS ydotool DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 add_subdirectory(Daemon)
 add_subdirectory(manpage)
+
+install(FILES ${CMAKE_SOURCE_DIR}/config/ydotoold.service
+        DESTINATION /etc/systemd/system)
+
+set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Michael Nutt") # required
+set(CPACK_PACKAGE_NAME "ydotool")
+set(CPACK_PACKAGE_VERSION "1.0.4")
+set(CPACK_PACKAGE_RELEASE 1)
+set(CPACK_PACKAGE_CONTACT "Michael Nutt <michael@nutt.im>")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Send commands to wayland")
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}_${CPACK_PACKAGE_RELEASE}_${CMAKE_SYSTEM_PROCESSOR}")
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/config/postinst;${CMAKE_CURRENT_SOURCE_DIR}/config/prerm;")
+
+include(CPack)

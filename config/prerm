@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Stop and disable mytoold service
+systemctl stop ydotoold
+systemctl disable ydotoold
+
+# Reload systemd daemon
+systemctl daemon-reload

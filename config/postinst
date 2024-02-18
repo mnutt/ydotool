@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Reload systemd daemon
+systemctl daemon-reload
+
+# Enable and start mytoold service
+systemctl enable ydotoold
+systemctl start ydotoold
